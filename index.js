@@ -2,10 +2,10 @@
 // Define a function called getDogArtworks that makes the API call to the request URL you defined in the worksheet (to get 3 dog artworks)
 // Make sure to console log all 3 titles (after you get the data retrieve the nested values) 
 let requestURL="https://api.artic.edu/api/v1/artworks/from/search?q=dogs&size=3"
-async function fetchData(requestUrl){
+async function getDogArtworks(requestUrl){
     const response = await fetch(requestURL)
     const data = await response.json()
-    console.log(data.message)
+    console.log(data.data[1].title)
     return data
 }
 
@@ -20,7 +20,7 @@ fetchData(requestURL)
 // Now when the function it's called it should only return artwork the specified # of artworks based on the inputed search query
 // Make sure to console log the values. 
 function searchArtworks(searchQuery, sizeLimit){
-    console.log(fetchData(requestURL+searchQuery+sizeLimit))
+    console.log(fetchData("https://api.artic.edu/api/v1/artworks/from/search?q=" + searchQuery + "&size=" + +sizeLimit))
 }
 
 
